@@ -88,7 +88,7 @@
     "agents": {
         "defaults": {
             "model": {
-                "primary": "gradient/anthropic-claude-opus-4.5"
+                "primary": "gradient/llama3.3-70b-instruct"
             }
         }
     }
