@@ -32,6 +32,26 @@
                 "api": "openai-completions",
                 "models": [
                     {
+                        "id": "claude-opus-4.5",
+                        "name": "Claude Opus 4.5",
+                        "reasoning": true,
+                        "input": [
+                            "text"
+                        ],
+                        "contextWindow": 200000,
+                        "maxTokens": 8192
+                    },
+                    {
+                        "id": "claude-sonnet-4.5",
+                        "name": "Claude Sonnet 4.5",
+                        "reasoning": false,
+                        "input": [
+                            "text"
+                        ],
+                        "contextWindow": 200000,
+                        "maxTokens": 8192
+                    },
+                    {
                         "id": "llama3.3-70b-instruct",
                         "name": "Llama 3.3 70B Instruct",
                         "reasoning": false,
@@ -68,7 +88,7 @@
     "agents": {
         "defaults": {
             "model": {
-                "primary": "gradient/openai-gpt-oss-120b"
+                "primary": "gradient/claude-opus-4.5"
             }
         }
     }
