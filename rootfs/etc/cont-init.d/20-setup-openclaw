@@ -8,6 +8,7 @@ source_env_prefix OPENCLAW_
 # OpenClaw requires any env vars consumed in config to exist or else it fails to start.
 persist_env_var OPENCLAW_ \
   GRADIENT_API_KEY=change-me \
+  OPENROUTER_API_KEY=change-me \
   TAILSCALE_ENABLE="${TAILSCALE_ENABLE:-false}" \
   TS_SOCKET="${TS_SOCKET}" \
   TS_EXTRA_ARGS="${TS_EXTRA_ARGS}" \
@@ -96,6 +97,12 @@ fi
 if [ -n "$GRADIENT_API_KEY" ]; then
   echo "[generate-config] Injecting GRADIENT_API_KEY into config"
   sed -i "s|\${GRADIENT_API_KEY}|${GRADIENT_API_KEY}|g" "$CONFIG_FILE"
+fi
+
+# Substitute OPENROUTER_API_KEY in config
+if [ -n "$OPENROUTER_API_KEY" ]; then
+  echo "[generate-config] Injecting OPENROUTER_API_KEY into config"
+  sed -i "s|\${OPENROUTER_API_KEY}|${OPENROUTER_API_KEY}|g" "$CONFIG_FILE"
 fi
 
 # Handle ENABLE_UI flag - disable Control UI if set to false
