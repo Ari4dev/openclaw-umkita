@@ -92,6 +92,12 @@ else
   echo "[generate-config] Warning: Default config not found, using minimal config"
 fi
 
+# Substitute GRADIENT_API_KEY in config
+if [ -n "$GRADIENT_API_KEY" ]; then
+  echo "[generate-config] Injecting GRADIENT_API_KEY into config"
+  sed -i "s|\${GRADIENT_API_KEY}|${GRADIENT_API_KEY}|g" "$CONFIG_FILE"
+fi
+
 # Handle ENABLE_UI flag - disable Control UI if set to false
 if [ "${ENABLE_UI:-true}" = "false" ]; then
   echo "[generate-config] Disabling Control UI (ENABLE_UI=false)"
